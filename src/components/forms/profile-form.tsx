@@ -24,10 +24,14 @@ type Props = {
 
 const ProfileForm = ({ user, onUpdate }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof EditUserProfileSchema>>({
     mode: "onChange",
     resolver: zodResolver(EditUserProfileSchema),
-    defaultValues: {},
+    defaultValues: {
+      name: user.name,
+      email: user.email,
+    },
   });
 
   const handleSubmit = async (
@@ -39,7 +43,7 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
   };
 
   useEffect(() => {
-    form.reset({});
+    form.reset({ name: user.name, email: user.email });
   }, [user]);
 
   return (

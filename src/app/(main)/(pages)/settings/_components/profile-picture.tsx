@@ -4,6 +4,7 @@ import UploadCareButton from "./uploadcare-button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import "@uploadcare/blocks/web/lr-file-uploader-regular.min.css";
 import { X } from "lucide-react";
 
 type Props = {
