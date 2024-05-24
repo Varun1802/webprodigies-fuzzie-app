@@ -14,6 +14,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  fetchBotSlackChannels,
+  onConnections,
   //   fetchBotSlackChannels,
   //   onConnections,
   onDragStart,
@@ -27,8 +29,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import RenderConnectionAccordion from "./render-connection-accordion";
-// import RenderOutputAccordion from './render-output-accordian'
-// import { useFuzzieStore } from '@/store'
+import RenderOutputAccordion from "./render-output-accordian";
+import { useFuzzieStore } from "@/store";
 
 type Props = {
   nodes: EditorNodeType[];
@@ -37,21 +39,21 @@ type Props = {
 const EditorCanvasSidebar = ({ nodes }: Props) => {
   const { state } = useEditor();
   const { nodeConnection } = useNodeConnections();
-  //   const { googleFile, setSlackChannels } = useFuzzieStore()
-  //   useEffect(() => {
-  //     if (state) {
-  //       onConnections(nodeConnection, state, googleFile)
-  //     }
-  //   }, [state])
+  const { googleFile, setSlackChannels } = useFuzzieStore();
+  useEffect(() => {
+    if (state) {
+      onConnections(nodeConnection, state, googleFile);
+    }
+  }, [state]);
 
-  //   useEffect(() => {
-  //     if (nodeConnection.slackNode.slackAccessToken) {
-  //       fetchBotSlackChannels(
-  //         nodeConnection.slackNode.slackAccessToken,
-  //         setSlackChannels
-  //       )
-  //     }
-  //   }, [nodeConnection])
+  useEffect(() => {
+    if (nodeConnection.slackNode.slackAccessToken) {
+      fetchBotSlackChannels(
+        nodeConnection.slackNode.slackAccessToken,
+        setSlackChannels
+      );
+    }
+  }, [nodeConnection]);
 
   return (
     <aside>
@@ -111,10 +113,10 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
               <AccordionTrigger className="!no-underline">
                 Action
               </AccordionTrigger>
-              {/* <RenderOutputAccordion
+              <RenderOutputAccordion
                 state={state}
                 nodeConnection={nodeConnection}
-              /> */}
+              />
             </AccordionItem>
           </Accordion>
         </TabsContent>
