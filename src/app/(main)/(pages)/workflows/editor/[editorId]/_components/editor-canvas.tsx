@@ -27,9 +27,9 @@ import { usePathname } from "next/navigation";
 // import { usePathname } from "next/navigation";
 import { v4 } from "uuid";
 import { EditorCanvasDefaultCardTypes } from "@/lib/constant";
-// import FlowInstance from "./flow-instance";
-// import EditorCanvasSidebar from "./editor-canvas-sidebar";
-// import { onGetNodesEdges } from "../../../_actions/workflow-connections";
+import FlowInstance from "./flow-instance";
+import EditorCanvasSidebar from "./editor-canvas-sidebar";
+// import { onGetNodesEdges } from "@/app/(main)/(pages)/workflows/editor/[editorId]/_actions/workflow-connections";
 
 type Props = {};
 
@@ -239,7 +239,7 @@ const EditorCanvas = (props: Props) => {
         </div>
       </ResizablePanel>
       <ResizableHandle />
-      {/* <ResizablePanel defaultSize={40} className="relative sm:block">
+      <ResizablePanel defaultSize={40} className="relative sm:block">
         {isWorkFlowLoading ? (
           <div className="absolute flex h-full w-full items-center justify-center">
             <svg
@@ -264,7 +264,7 @@ const EditorCanvas = (props: Props) => {
             <EditorCanvasSidebar nodes={nodes} />
           </FlowInstance>
         )}
-      </ResizablePanel> */}
+      </ResizablePanel>
     </ResizablePanelGroup>
   );
 };
