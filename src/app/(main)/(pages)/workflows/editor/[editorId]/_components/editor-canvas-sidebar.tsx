@@ -20,13 +20,13 @@ import {
 } from "@/lib/editor-utils";
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-hepler";
 
-// import {
-//   Accordion,
-//   AccordionContent,
-//   AccordionItem,
-//   AccordionTrigger,
-// } from '@/components/ui/accordion'
-// import RenderConnectionAccordion from './render-connection-accordion'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import RenderConnectionAccordion from "./render-connection-accordion";
 // import RenderOutputAccordion from './render-output-accordian'
 // import { useFuzzieStore } from '@/store'
 
@@ -92,11 +92,8 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
             {state.editor.selectedNode.data.title}
           </div>
 
-          {/* <Accordion type="multiple">
-            <AccordionItem
-              value="Options"
-              className="border-y-[1px] px-2"
-            >
+          <Accordion type="multiple">
+            <AccordionItem value="Options" className="border-y-[1px] px-2">
               <AccordionTrigger className="!no-underline">
                 Account
               </AccordionTrigger>
@@ -110,19 +107,16 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
                 ))}
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem
-              value="Expected Output"
-              className="px-2"
-            >
+            <AccordionItem value="Expected Output" className="px-2">
               <AccordionTrigger className="!no-underline">
                 Action
               </AccordionTrigger>
-              <RenderOutputAccordion
+              {/* <RenderOutputAccordion
                 state={state}
                 nodeConnection={nodeConnection}
-              />
+              /> */}
             </AccordionItem>
-          </Accordion> */}
+          </Accordion>
         </TabsContent>
       </Tabs>
     </aside>
