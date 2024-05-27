@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,7 +10,7 @@ datasource db {
 model User {
   id           Int     @id @default(autoincrement())
   clerkId      String  @unique
-  name         String
+  name         String?
   email        String  @unique
   profileImage String?
   tier         String? @default("Free")
@@ -30,16 +27,6 @@ model User {
   Slack                 Slack[]
   connections           Connections[]
   workflows             Workflows[]
-  Post                  Post[]
-}
-
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
 }
 
 model LocalGoogleCredential {
@@ -113,13 +100,11 @@ model Connections {
 }
 
 model Workflows {
-  id                Int      @id @default(autoincrement())
+  id                String   @id @default(uuid())
   nodes             String?
   edges             String?
   name              String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  discordTemplate   String
+  discordTemplate   String?
   notionTemplate    String?
   slackTemplate     String?
   slackChannels     String[]
