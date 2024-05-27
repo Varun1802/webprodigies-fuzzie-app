@@ -11,10 +11,9 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-
+  id           Int @id @default(autoincrement())
   clerkId      String  @unique
-  name         String?
+  name         String
   email        String  @unique
   profileImage String?
   tier         String? @default("Free")
@@ -104,11 +103,13 @@ model Connections {
 }
 
 model Workflows {
-  id                String   @id @default(uuid())
+  id                Int      @id @default(autoincrement())
   nodes             String?
   edges             String?
   name              String
-  discordTemplate   String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  discordTemplate   String
   notionTemplate    String?
   slackTemplate     String?
   slackChannels     String[]

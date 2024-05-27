@@ -16,8 +16,6 @@ import {
 import {
   fetchBotSlackChannels,
   onConnections,
-  //   fetchBotSlackChannels,
-  //   onConnections,
   onDragStart,
 } from "@/lib/editor-utils";
 import EditorCanvasIconHelper from "./editor-canvas-card-icon-hepler";
